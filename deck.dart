@@ -28,6 +28,12 @@ class Deck {
   shuffle() {
     cards.shuffle();
   }
+
+  cardsWithSuit(String suitToMatch) {
+    return cards.where((card) {
+      return card.suit == suitToMatch;
+    });
+  }
 }
 
 class Card {
@@ -35,6 +41,10 @@ class Card {
   String suit;
 
   Card(this.rank, this.suit);
+
+  toString() {
+    return "${rank} of ${suit}\n";
+  }
 }
 
 main() {
@@ -44,4 +54,6 @@ main() {
   deck.shuffle();
   print("----- SHUFFLED DECK -----\n");
   print(deck);
+  print("--- ALL THE DIAMONDS ---");
+  print(deck.cardsWithSuit("Diamonds"));
 }
