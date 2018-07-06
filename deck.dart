@@ -24,6 +24,10 @@ class Deck {
     }
     return returnString;
   }
+
+  shuffle() {
+    cards.shuffle();
+  }
 }
 
 class Card {
@@ -35,5 +39,9 @@ class Card {
 
 main() {
   var deck = Deck();
+  print("-------- NEW DECK -------\n");
+  print(deck);
+  deck.shuffle();
+  print("----- SHUFFLED DECK -----\n");
   print(deck);
 }
