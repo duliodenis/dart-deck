@@ -32,6 +32,12 @@ class Deck {
   cardsWithSuit(String suitToMatch) {
     return cards.where((card) => card.suit == suitToMatch);
   }
+
+  deal(int handSize) {
+    var hand = cards.sublist(0, handSize);
+    cards = cards.sublist(handSize);
+    return hand;
+  }
 }
 
 class Card {
@@ -47,11 +53,18 @@ class Card {
 
 main() {
   var deck = Deck();
+  
   print("-------- NEW DECK -------\n");
   print(deck);
   deck.shuffle();
+  
   print("----- SHUFFLED DECK -----\n");
   print(deck);
+  
   print("--- ALL THE DIAMONDS ---");
   print(deck.cardsWithSuit("Diamonds"));
+  
+  print("- DEALING A FIVE CARD HAND -");
+  print(deck.deal(5));
+  print("The deck has ${deck.cards.length} cards left");
 }
